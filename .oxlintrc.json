@@ -1,0 +1,20 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"jsPlugins": ["@shadcn/lint"],
+	"categories": {
+		"correctness": "error"
+	},
+	"rules": {
+		"unicorn/no-empty-file": "off",
+		"shadcn/no-restyle": ["error", { "allow": ["layout"] }]
+	},
+	"overrides": [
+		{
+			"files": ["src/lib/components/ui/**"],
+			"rules": {
+				"shadcn/no-restyle": "off"
+			}
+		}
+	],
+	"ignorePatterns": [".svelte-kit/**", "build/**", "src/lib/paraglide/**", "project.inlang/**"]
+}
