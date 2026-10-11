@@ -1,0 +1,10 @@
+name: agriculture-website
+root: ~/extra-storage/agriculture-website/
+
+windows:
+  - editor:
+      panes:
+        -
+  - server:
+      panes:
+        -
