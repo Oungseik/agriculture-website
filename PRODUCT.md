@@ -21,6 +21,8 @@ An informational website that helps visitors learn about the Moshi Moshi agricul
 - The supplied promotional image identifies the range as biostimulants and shows five crop labels: Vegetable, Bean, Rice Plant, Flowers, and Perennial Tree.
 - Application rates, application methods, ingredients by formulation, safety instructions, pack sizes, manufacturer details, prices, and availability remain unconfirmed.
 - Do not invent efficacy claims, crop yield improvements, certifications, testimonials, or application instructions.
+- Each crop-labeled product has its own page at `/products/vegetable`, `/products/bean`, `/products/rice`, `/products/flowers`, or `/products/perennial`.
+- Product pages use meaningful section titles and lorem ipsum for unknown details, as requested. Replace the placeholder content with confirmed product information when it becomes available.
 
 ## Brand Commitments
 
@@ -33,7 +35,7 @@ An informational website that helps visitors learn about the Moshi Moshi agricul
 
 - User-supplied promotional image showing five labeled bottles, Burmese promotional text, a Japan Formula badge, and a printed Eurofins report number.
 - The badge and report number are visible marketing material, not independently verified evidence of origin, certification, or efficacy.
-- Living Fields is now implemented as an English-only, crop-first informational homepage with five product-reading sections. Production crop scenes, bottle and adapted sun artwork are illustrative; original packaging and formulation documentation remain unavailable. Asset provenance, exact generation prompts, recorded timestamps and raster-processing limitations are retained in `assets/provenance.json`, outside the publicly deployed static assets.
+- The English-only homepage introduces the range and links to five dedicated product pages. Those pages provide a reading structure for overview, benefits, ingredients, crop suitability, application, compatibility, storage, and FAQs, with placeholder body content. Production crop scenes, bottle and adapted sun artwork are illustrative; original packaging and formulation documentation remain unavailable. Asset provenance, exact generation prompts, recorded timestamps and raster-processing limitations are retained in `assets/provenance.json`, outside the publicly deployed static assets.
 
 ## Product Principles
 

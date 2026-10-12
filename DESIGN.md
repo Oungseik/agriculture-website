@@ -1,71 +1,101 @@
 ---
 name: Moshi Moshi — Living Fields
-description: Peaceful photographic fields and crop-first product reading.
+description: Peaceful crop photography and spacious product reading.
 colors:
   evergreen: '#193c2e'
   field-green: '#426729'
   field-green-deep: '#304d1d'
-  harvest-gold: '#d1a51e'
   white: '#ffffff'
   reading-paper: '#f6f7f3'
   quiet-green: '#53685a'
   reading-rule: '#d9e2d7'
-  about-ground: '#edf1e8'
+  field-soft: '#eaf0e3'
+  on-dark-muted: '#cfdbc7'
+  dark-rule: '#45634f'
 typography:
   display:
     fontFamily: 'Alata, sans-serif'
-    fontSize: 'clamp(48px, 4.49vw, 74px)'
+    fontSize: 'clamp(52px, 6vw, 88px)'
     fontWeight: 400
-    lineHeight: 1
-    letterSpacing: '-0.025em'
+    lineHeight: 1.08
+    letterSpacing: '-0.03em'
+  product-display:
+    fontFamily: 'Alata, sans-serif'
+    fontSize: 'clamp(42px, 4.2vw, 62px)'
+    fontWeight: 400
+    lineHeight: 1.14
+    letterSpacing: '-0.03em'
   headline:
     fontFamily: 'Alata, sans-serif'
-    fontSize: 'clamp(34px, 3.06vw, 48px)'
-    fontWeight: 400
-    lineHeight: 1.15
-    letterSpacing: '-0.025em'
-  title:
-    fontFamily: 'Alata, sans-serif'
-    fontSize: '35px'
+    fontSize: 'clamp(34px, 3.2vw, 48px)'
     fontWeight: 400
     lineHeight: 1.2
+    letterSpacing: '-0.025em'
+  reading-headline:
+    fontFamily: 'Alata, sans-serif'
+    fontSize: 'clamp(28px, 2.3vw, 34px)'
+    fontWeight: 400
+    lineHeight: 1.25
+    letterSpacing: '-0.02em'
+  title:
+    fontFamily: 'Alata, sans-serif'
+    fontSize: '23px'
+    fontWeight: 400
+    lineHeight: 1.25
+    letterSpacing: '-0.02em'
   body:
     fontFamily: 'Lato, sans-serif'
     fontSize: '18px'
     fontWeight: 400
     lineHeight: 1.55
-  note:
+  reading:
+    fontFamily: 'Lato, sans-serif'
+    fontSize: '18px'
+    fontWeight: 400
+    lineHeight: 1.8
+  label:
     fontFamily: 'Lato, sans-serif'
     fontSize: '16px'
     fontWeight: 400
-    lineHeight: 1.65
+    lineHeight: 1.55
 rounded:
-  photo: '3px'
-  thumbnail: '4px'
-  action: '999px'
+  photo: '0px'
+  action: '4.8px'
 spacing:
   compact: '16px'
-  group: '22px'
-  choices: '28px'
-  section-start: '40px'
-  article: '52px'
+  group: '24px'
+  block: '32px'
+  split: '64px'
 components:
-  primary-link:
+  primary-action:
     backgroundColor: '{colors.field-green}'
     textColor: '{colors.white}'
     rounded: '{rounded.action}'
-    padding: '10px 28px'
-    height: '50px'
-  primary-link-hover:
+    padding: '0 16px 0 20px'
+    height: '48px'
+  primary-action-hover:
     backgroundColor: '{colors.field-green-deep}'
     textColor: '{colors.white}'
-  focus-panel:
-    backgroundColor: '{colors.white}'
-    textColor: '{colors.evergreen}'
-    rounded: '{rounded.photo}'
-  reading-section:
+  hero-action:
     backgroundColor: '{colors.reading-paper}'
     textColor: '{colors.evergreen}'
+    rounded: '{rounded.action}'
+    padding: '0 16px 0 20px'
+    height: '48px'
+  reading-link:
+    textColor: '{colors.evergreen}'
+    typography: '{typography.label}'
+    height: '44px'
+  main-navigation:
+    backgroundColor: '{colors.reading-paper}'
+    textColor: '{colors.evergreen}'
+  breadcrumbs:
+    textColor: '{colors.quiet-green}'
+  contents-navigation:
+    textColor: '{colors.quiet-green}'
+  faq-disclosure:
+    textColor: '{colors.evergreen}'
+    padding: '20px 0'
 ---
 
 # Design System: Moshi Moshi
@@ -74,104 +104,121 @@ components:
 
 **Creative North Star: "Living Fields"**
 
-A peaceful, farm-and-nature-led site with photographic depth and clear English product reading. Morning fields carry the atmosphere; evergreen humanist sans text and white controls keep the information legible. This is an informational product range, not a sales catalog or an agronomic teaching board.
+A peaceful, farm-and-nature-led world: morning fields provide atmosphere, evergreen text provides clarity, and the gold sun-spiral identifies Moshi Moshi. Self-hosted humanist sans typography and generous space keep crop photography and product reading approachable.
 
-The built system uses restrained green controls, a harvest-gold sun identity and flat, spacious reading sections. Brand and bottle artwork are adaptations, not original packaging evidence. This file records the homepage composition and reusable system implemented in `src/routes/+page.svelte` and `src/routes/layout.css`. Production asset provenance, exact prompts, recorded timestamps and processing limitations are retained in `assets/provenance.json`.
+The implemented system is flat and photographic. Pale reading paper carries the main content, field-soft green separates supporting areas, and a deep evergreen footer closes the page. The existing sun artwork and illustrative bottles remain adaptations, not original packaging evidence. Asset provenance and processing limitations remain in `assets/provenance.json`.
 
 **Key Characteristics:**
 
-- Independently authored crop photography, separate from semantic text and controls.
-- Humanist sans typography with a clear reading hierarchy.
-- White navigation and product surfaces against natural photographic depth.
-- One interruptible, user-triggered crop transition; no ongoing decorative motion.
+- Large rectangular crop photographs with semantic, selectable text.
+- Self-hosted Alata headings and Lato reading text.
+- Flat product links and restrained green actions.
+- Shared navigation, clear reading landmarks, and native disclosures.
+
+This file records reusable visual decisions from the built routes and components. Homepage and product-page strategy remains in `.impeccable/surfaces/src-routes-page-svelte.md`.
 
 ## Colors
 
+The palette pairs evergreen ink with pale natural surfaces. The frontmatter records the implemented CSS colours; the gold identity stays in the existing sun artwork.
+
 ### Primary
 
-- **Field Green:** Actions, selected crop underline and keyboard focus.
-- **Deep Field Green:** Reading links and action hover.
+- **Field Green:** Primary actions, highlighted headline text, hover feedback, and keyboard focus.
+- **Deep Field Green:** Opaque primary-action hover.
 
 ### Secondary
 
-- **Harvest Gold:** The adapted sun-spiral identity; not a certification badge.
+- **Harvest Gold:** The adapted sun-spiral mark, retained as an identity asset rather than a new UI accent token.
 
 ### Neutral
 
-- **Evergreen:** Headings and main text.
-- **White:** Navigation, focus strip, footer and primary-action lettering.
-- **Reading Paper:** The full product-reading field.
-- **Quiet Green:** Secondary text and identification caveats.
-- **Reading Rule:** One-pixel boundaries between product articles.
-- **About Ground:** The quiet green-toned About section.
+- **Evergreen:** Main text, headings, the hero readability scrim, and the footer ground.
+- **White:** Primary-action lettering.
+- **Reading Paper:** The page, shared header, crop navigation, and pale hero text and action.
+- **Quiet Green:** Body copy, captions, breadcrumbs, and contents links.
+- **Reading Rule:** Fine boundaries between reading sections and navigation areas.
+- **Field Soft:** Crop-navigation hover and focus feedback, the About ground, and photographic fallbacks.
+- **On Dark Muted / Dark Rule:** Legible secondary footer text and its quiet divider; On Dark Muted also softens the hero text-link underline.
 
 **The Identity Is Not Evidence Rule.** Illustration colours and packaging adaptations never establish a product fact.
 
 ## Typography
 
-Display and section headings use self-hosted **Alata**. Body text, navigation, controls and product-strip names use self-hosted **Lato**, regular and bold. Both retain sans-serif fallbacks. Fonts come from their Fontsource packages; no runtime font-service request is required.
+Alata supplies the relaxed heading voice; Lato supplies body text, navigation, and controls. Alata regular and Lato regular/bold are imported from Fontsource and self-hosted, with sans-serif fallbacks.
 
-Display sizing contracts on smaller screens: the intermediate desktop range uses a 42–52px clamp; mobile uses `clamp(35px, 7.9vw, 57px)` with 1.08 line height. Section headings remain prominent; mobile product-article titles are 30px. Body reading is 18px, article paragraphs become 17px on mobile, and notes are 16px. Prose blocks stay below approximately 66–70 characters where the layout permits.
+The display and product-display roles serve their respective openings; headline serves broad section introductions, reading-headline serves product reading, and title names photographic product links. Body is the shared baseline; reading increases paragraph leading. Product prose stays near 68 characters per line and introductory copy near 38–48, where the layout permits.
 
-**The One Reading Voice Rule.** Do not introduce serif catalog cards or institutional display lettering into this sans-led world.
+Responsive type follows the source rather than one universal scale: homepage display becomes `clamp(36px, 9vw, 64px)` with 1.12 line-height at 760px; product display becomes `clamp(40px, 9vw, 56px)`. Product-link titles become 21px and long reading paragraphs 17px on mobile. Captions and breadcrumb text stay smaller than body copy.
+
+**The One Reading Voice Rule.** Keep the self-hosted Alata/Lato pairing across crop browsing and product reading.
 
 ## Layout
 
-Navigation is a slim horizontal strip (62px desktop, 72px mobile). The desktop opening uses a stable panoramic background with a left introduction and right crop focus. Its measured container starts 10.68% from the left, occupies 81.52% of the viewport, and gives the focus column 39.22% of that container. The main reading width is 78.64%, capped at 1208px.
+The shared container occupies 88% of the viewport and is capped at 1280px. Broad image/text compositions use two equal columns, generous gaps, and clear section spacing. The header content is 64px tall on desktop and 60px on mobile, with a 1px bottom rule; the footer groups the identity and navigation in three desktop columns, with two navigation columns below the identity on mobile.
 
-The crop ribbon has five equal desktop choices, 28px gaps and a 3px selected underline. At 1100px, containers broaden and gaps tighten. At 760px and below, the opening stacks, the selector wraps into three columns with the last choice spanning two, and product articles and reading sections become one column. Main mobile content occupies 88% of the viewport. The header keeps both navigation links visible rather than hiding them in a menu, with a further small-header breakpoint at 380px.
+The homepage hero uses a full-bleed field photograph with live text in the shared container. Its content area has a minimum height of `clamp(560px, 46vw, 680px)` and 72px vertical padding; the copy is capped at 780px. At 760px, the minimum height is 560px with 64px vertical padding, and the actions wrap as space requires.
 
-Articles use flat image/text rows with one-pixel separators and 52px vertical padding. Generous section spacing separates identification, before-use reading and About. Below the opening viewport, no content depends on animation or crop selection to be present.
+Crop navigation presents a label beside five divided links on desktop. At 1300px the label moves above the links; at 1100px thumbnails and names stack and arrows disappear. At 760px the links form two columns, with the final link spanning both. Every crop destination remains visible.
+
+At 1100px, column gaps tighten and the photographic product grid changes from five to three columns. At 760px, image/text compositions become one column, product and related-product grids use two columns, and contents navigation becomes a wrapping list. Product summaries precede their images on mobile.
+
+Desktop product reading reserves a 260px contents column, contracting to 220px at 1100px, beside flexible prose. Contents remain sticky 32px from the top; on mobile they return to normal document flow. Reading sections use fine separators and 36px vertical padding, contracting to 28px on mobile. Common actions and text links retain a 44px or larger interaction height.
 
 ## Elevation & Depth
 
-Photographs provide most of the depth. Only the crop-focus panel has a soft structural shadow: `0 5px 20px #193c2e20`. Reading articles, actions and navigation are flat. Do not add card elevation to the product-reading sequence.
+Photographs provide depth; tonal surfaces and fine rules provide structure. The shipped primary actions, product links, header, reading sections, and footer have no decorative shadows or enclosing card elevation.
+
+The homepage photograph carries an evergreen readability gradient, strongest behind the text (82% to 22% opacity across the image). At 760px, a uniform 74% evergreen scrim preserves contrast across the mobile crop.
+
+**The Flat Reading Rule.** Keep long reading sections visually continuous, using space and fine rules for separation.
 
 ## Shapes
 
-Photographic corners are almost square, using the photo and thumbnail radii in the frontmatter. The primary action is a pill. Reading rows have no enclosing card shell. The selected underline is a rule beneath the control, not a thick accent border around a rounded card.
+Photography has square corners. Primary actions are small rectangles with gently softened corners, using the action radius from the frontmatter. Inline arrows clarify destinations; there are no enclosing shells around photographic product links.
+
+The sun-spiral and bottle silhouettes come from the retained raster artwork. Bottle labels combine crop-specific colour with semantic label text.
 
 ## Components
 
-### Primary link
+### Actions and reading links
 
-A real section anchor with an inline Lucide arrow. The desktop action uses the frontmatter's padding and minimum height; mobile uses 25px horizontal padding and a 48px minimum height. Hover darkens the green. Keyboard focus uses a 3px green outline with 5px offset.
+The shared Button component uses its default variant and large size for prominent product-page section anchors. An inline arrow accompanies the label. Hover uses opaque deep field green; active feedback moves the action by 1px. The primary action uses the frontmatter's 48px height and arrow-aware padding.
 
-### Reading link
+The homepage hero uses the same Button's secondary variant and large size, with reading-paper background and evergreen lettering scoped to the hero. It retains the primary action's dimensions and active feedback; hover mixes 5% evergreen into the paper. The accompanying text link stays pale and thickens its underline on hover.
 
-Evergreen-green text, one-pixel bottom rule and a restrained inline arrow. Hover strengthens the rule without changing surrounding layout. Each link leads to an existing section or product article; no pretend endpoint exists.
+Reading links use an underline, a small inline arrow, and a 44px minimum interaction height. Hover changes the text to field green. Keyboard focus uses a 3px field-green outline with a 5px offset; the hero uses reading-paper focus and the footer uses its lighter footer colour.
 
-### Crop selector
+### Shared navigation
 
-Five native buttons with `aria-pressed`, a named group and a polite status announcement. The image, product name, illustrative bottle label and reading destination commit through one crop-state assignment. Rice is the initial composition, not a product recommendation. Selection remains legible without motion.
+The compact header pairs a 32px sun mark and 22px bold Lato brand name with 15px navigation links spaced 24px apart. On mobile, the mark becomes 28px, the name 20px (19px at 360px), and links 14px with 16px gaps (14px at 360px). Brand and navigation links retain 44px interaction heights. The current Home or Products link has a fine green underline; hover uses field green. Mobile retains Products and About while the brand provides the home destination. Breadcrumbs use muted text and small chevrons. The evergreen footer carries the same identity with pale links and fine boundaries.
 
-### Crop transition
+The skip link reveals on focus and leads to the main landmark. Section targets are focusable, with scroll spacing that leaves their headings visible.
 
-A temporary, accessibility-hidden photograph travels from the clicked thumbnail to the focus window using the Web Animations API (520ms, `cubic-bezier(0.16, 1, 0.3, 1)`). New selections cancel the previous flight. Scroll, resize, reduced-motion preference changes and component disposal remove it. An offscreen destination or reduced-motion preference uses an immediate state update. No animation library, scroll lock or decorative loop is installed.
+Crop navigation uses reading paper, fine dividers, an Alata label (24px, becoming 22px at 1300px), and five thumbnail/name/arrow links. Thumbnails have square corners (44px, becoming 36px on mobile); link text uses Lato (16px, becoming 15px on mobile). Hover and focus add field-soft background, and hover underlines the crop name. Background feedback uses 180ms ease-out and follows the shared reduced-motion rule.
 
-Routine primary-action colour and thumbnail-hover brightness feedback use `140ms ease-out`; reduced motion disables these transitions.
+### Photographic product links and bottle illustration
 
-### Product strip and illustration
+A complete photographic product item is one semantic link, with the crop image, smaller illustrative bottle, Alata product name, category, and explicit reading action. Hover slightly enlarges the crop image (1.035 scale over 240ms ease-out) and underlines the reading action. Related products use simpler image/name links.
 
-A white semantic strip names the selected crop and links directly to its article. The smaller white bottle is a cleaned native-alpha raster, with semantic label text layered above it. Its accessible name and visible notice identify it as illustrative packaging. Never substitute generated label text for verified product copy.
+The shared bottle uses the existing native-alpha raster and visible semantic crop labels. Its accessible name states that it is illustrative packaging; captions and the footer retain the illustration notice.
 
-### Navigation and browser surfaces
+### Contents and FAQs
 
-Header, range index and footer use ordinary anchors. Product and reading-section targets are focusable for keyboard navigation. The skip link leads to the range. Text selection, scrollbar colours, tap highlight and focus outline use the site palette. Reduced motion also disables smooth scrolling and routine CSS transitions.
+Contents navigation uses ordinary anchors with 44px minimum heights. Reading sections stay present without client-side interaction. FAQs use native `details` and `summary`, fine rules, a green disclosure marker, and bold summary text when open.
+
+Button feedback uses Tailwind's 150ms standard easing. Reduced motion removes transitions and animations, disables the photographic hover enlargement, and restores immediate scrolling.
 
 ## Do's and Don'ts
 
 ### Do:
 
-- **Do** use separate production crop images and semantic English UI.
-- **Do** preserve the sun identity, evergreen text, white reading surfaces and peaceful farm atmosphere.
-- **Do** keep every product readable without JavaScript or animation.
-- **Do** label packaging and crop imagery as illustrations where they could be mistaken for evidence.
-- **Do** preserve keyboard-visible focus and immediate reduced-motion feedback.
+- **Do** preserve the Moshi Moshi name, gold sun identity, evergreen text, and peaceful photographic atmosphere.
+- **Do** keep imagery separate from semantic text, navigation, and product labels.
+- **Do** preserve visible keyboard focus, native links and disclosures, and reduced-motion behavior.
+- **Do** retain illustration notices and asset provenance when reusing the existing artwork.
 
 ### Don't:
 
-- **Don't** flatten the website into a single raster; text, navigation and crop controls remain semantic, selectable and responsive.
-- **Don't** invent application instructions, performance claims, origins or certifications.
-- **Don't** replace the peaceful, photographic world with serif cards, teaching boards or a sales-heavy catalog.
-- **Don't** add motion loops, hover-only navigation or an animation dependency.
+- **Don't** treat adapted artwork as proof of actual packaging, origin, certification, or product performance.
+- **Don't** flatten the interface into a raster or make reading depend on animation.
+- **Don't** replace the peaceful farm world with teaching-board or institutional presentation.
