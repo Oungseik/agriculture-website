@@ -84,20 +84,20 @@ Add variables to the global CSS file path in `components.json` (`tailwind.css`).
 ```css
 /* 1. Define in the global CSS file. */
 :root {
-  --warning: oklch(0.84 0.16 84);
-  --warning-foreground: oklch(0.28 0.07 46);
+	--warning: oklch(0.84 0.16 84);
+	--warning-foreground: oklch(0.28 0.07 46);
 }
 .dark {
-  --warning: oklch(0.41 0.11 46);
-  --warning-foreground: oklch(0.99 0.02 95);
+	--warning: oklch(0.41 0.11 46);
+	--warning-foreground: oklch(0.99 0.02 95);
 }
 ```
 
 ```css
 /* 2a. Register with Tailwind v4 (@theme inline). */
 @theme inline {
-  --color-warning: var(--warning);
-  --color-warning-foreground: var(--warning-foreground);
+	--color-warning: var(--warning);
+	--color-warning-foreground: var(--warning-foreground);
 }
 ```
 
@@ -106,15 +106,14 @@ On Tailwind v3, register in `tailwind.config.js` (see the [Tailwind v3 docs](htt
 ```js
 // 2b. Register with Tailwind v3 (tailwind.config.js).
 module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        warning: "oklch(var(--warning) / <alpha-value>)",
-        "warning-foreground":
-          "oklch(var(--warning-foreground) / <alpha-value>)",
-      },
-    },
-  },
+	theme: {
+		extend: {
+			colors: {
+				warning: 'oklch(var(--warning) / <alpha-value>)',
+				'warning-foreground': 'oklch(var(--warning-foreground) / <alpha-value>)'
+			}
+		}
+	}
 };
 ```
 
