@@ -143,11 +143,13 @@
 	--field-soft: #eaf0e3;
 	--field-on-dark-muted: #cfdbc7;
 	--field-dark-rule: #45634f;
+	--site-header-height: 65px;
 	color-scheme: light;
 }
 
 html {
 	scroll-behavior: smooth;
+	scroll-padding-top: var(--site-header-height);
 	scrollbar-color: #849874 var(--field-paper);
 }
 
@@ -214,6 +216,12 @@ h3 {
 button {
 	font: inherit;
 	cursor: pointer;
+}
+
+@media (max-width: 760px) {
+	:root {
+		--site-header-height: 113px;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {

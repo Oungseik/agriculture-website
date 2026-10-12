@@ -23,6 +23,7 @@ An informational website that helps visitors learn about the Moshi Moshi agricul
 - Do not invent efficacy claims, crop yield improvements, certifications, testimonials, or application instructions.
 - Each crop-labeled product has its own page at `/products/vegetable`, `/products/bean`, `/products/rice`, `/products/flowers`, or `/products/perennial`.
 - Product pages use meaningful section titles and lorem ipsum for unknown details, as requested. Replace the placeholder content with confirmed product information when it becomes available.
+- The blog at `/blog` links to six sample articles at `/blog/[slug]` with lorem ipsum content; the homepage previews three articles and links to the blog.
 
 ## Brand Commitments
 

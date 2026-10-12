@@ -5,11 +5,13 @@
 	import { Button } from '#lib/components/ui/button/index.js';
 	import ProductBottle from '#lib/components/product-bottle.svelte';
 	import { crops } from '#lib/crops.js';
+	import BlogCard from '#lib/components/blog-card.svelte';
+	import { posts } from '#lib/blog.js';
 </script>
 
 <svelte:head>
 	<title>Moshi Moshi | A closer look at what you grow</title>
-	<meta name="description" content="Discover the Moshi Moshi biostimulant range. Explore dedicated product pages for vegetables, beans, rice, flowers, and perennial trees." />
+	<meta name="description" content="Discover the Moshi Moshi biostimulant range for vegetables, beans, rice, flowers, and perennial trees, and explore stories from the field on our blog." />
 </svelte:head>
 
 <section class="hero" aria-labelledby="intro-title">
@@ -61,7 +63,19 @@
 	</div>
 </section>
 
+<section class="blog-section container" id="blog" aria-labelledby="blog-title" tabindex="-1">
+	<div class="section-intro">
+		<h2 id="blog-title">There’s more<br />to the field.</h2>
+		<div class="blog-intro-copy"><p>Explore our blog for field notes, crop stories, and a little seasonal inspiration.</p><a class="text-link" href={resolve('/blog')}>Explore the blog <ArrowRight size={18} aria-hidden="true" /></a></div>
+	</div>
+	<div class="blog-grid">{#each posts.slice(0, 3) as post (post.slug)}<BlogCard {post} />{/each}</div>
+</section>
+
 <style>
+	.blog-section { padding-block: 96px; }
+	.blog-intro-copy p { max-width: 48ch; color: var(--field-muted); line-height: 1.7; }
+	.blog-intro-copy .text-link { margin-top: 16px; }
+	.blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
 	.hero { position: relative; background: var(--field-ink); color: var(--field-paper); --secondary: var(--field-paper); --secondary-foreground: var(--field-ink); --ring: var(--field-paper); }
 	.hero-background { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 58%; }
 	.hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, color-mix(in srgb, var(--field-ink) 82%, transparent) 0%, color-mix(in srgb, var(--field-ink) 76%, transparent) 44%, color-mix(in srgb, var(--field-ink) 42%, transparent) 75%, color-mix(in srgb, var(--field-ink) 22%, transparent) 100%); }
@@ -101,6 +115,8 @@
 		.about-layout { gap: 48px; }
 	}
 	@media (max-width: 760px) {
+		.blog-section { padding-block: 56px; }
+		.blog-grid { grid-template-columns: 1fr; gap: 36px; }
 		.hero::before { background: color-mix(in srgb, var(--field-ink) 74%, transparent); }
 		.hero-background { object-position: 58% center; }
 		.hero-content { min-height: 560px; padding-block: 64px; }

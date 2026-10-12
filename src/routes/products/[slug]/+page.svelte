@@ -125,7 +125,7 @@
 	dd { margin: 0; }
 	.product-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
 	.product-reading { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 80px; border-top: 1px solid var(--field-rule); padding-block: 56px 80px; }
-	.contents nav { position: sticky; top: 32px; display: flex; flex-direction: column; align-items: flex-start; }
+	.contents nav { position: sticky; top: calc(var(--site-header-height) + 32px); display: flex; flex-direction: column; align-items: flex-start; }
 	.contents h2 { font-family: var(--font-sans); font-size: 16px; font-weight: 700; margin-bottom: 16px; }
 	.contents a { display: flex; align-items: center; min-height: 44px; padding-block: 8px; font-size: 15px; color: var(--field-muted); text-decoration: none; line-height: 1.4; }
 	.contents a:hover { color: var(--field-ink); text-decoration: underline; }
