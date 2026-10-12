@@ -1,0 +1,240 @@
+{
+	"method": "Codex CLI imagegen skill, built-in image_gen",
+	"generationCalls": 8,
+	"callsPerAsset": 1,
+	"rerolls": 0,
+	"usage": "Illustrative scenery and packaging only; not product efficacy evidence or exact packaging.",
+	"generationMode": "built-in image_gen only",
+	"fallbacks": 0,
+	"sourceGenerationProcessing": "None. Original native PNG outputs copied byte-for-byte from /home/oung/.codex/generated_images/.",
+	"assets": [
+		{
+			"id": "landscape",
+			"production": "static/images/landscape.webp",
+			"prompt": "Use case: photorealistic-natural\nAsset type: independent production landscape photograph for the approved Living Fields website.\nPrimary request: Generate a fresh wide panoramic photograph of a peaceful rice farm in morning light, closely matching the scenic composition described by the approved visual reference.\nComposition/framing: Wide 16:9 landscape, native resolution 2560x1440 pixels or greater. Pale blue sky fills the upper 45 percent. Sun rising on the far left, layered misty low mountains in the middle distance, lush green rice fields below, sunlit grasses in the foreground.\nLighting/mood: Peaceful natural morning sunshine, warm sunlight with pale blue sky, soft valley mist.\nConstraints: Opaque photographic image. The approved page is visual reference only; create a separate fresh landscape, never crop or reproduce its website layout. This scenic asset is illustrative, not efficacy evidence.\nAvoid: Text, lettering, UI, cards, borders, logos, bottles, products, watermarks.\n",
+			"createdAt": "2026-10-11T15:34:24.598Z",
+			"processing": "WebP quality 84 at native 1672x941. No upscaling; native resolution below requested 2560x1440.",
+			"generation": {
+				"callNumber": 1,
+				"tool": "image_gen.imagegen",
+				"transparentBackground": false,
+				"requestedMinimumDimensions": [2560, 1440],
+				"nativeOutput": {
+					"format": "PNG",
+					"width": 1672,
+					"height": 941,
+					"channels": "srgb  3.0",
+					"fully_opaque": true,
+					"top_left_pixel": "srgb(175,200,223)",
+					"native_transparent_alpha": false,
+					"bytes": 2421093,
+					"sha256": "cb449d9375880963a48bd30c5d4664e20b08917889209b18ff35a5d9740ff381",
+					"identical_to_original": true,
+					"meets_minimum_dimensions": false
+				},
+				"limitations": [
+					"Native output is 1672x941, below requested minimum 2560x1440. Tool exposes no explicit size parameter; requested resolution in prompt was not honored. No upscaling, fallback or reroll performed."
+				],
+				"status": "saved_with_reported_limitations"
+			}
+		},
+		{
+			"id": "vegetable",
+			"production": "static/images/vegetable.webp",
+			"prompt": "Use case: photorealistic-natural\nAsset type: independent production crop photograph for the approved Living Fields website.\nPrimary request: Photographic tight crop of dewy green cabbage heads and leaves in a working farm, natural morning light.\nComposition/framing: Square photograph, native resolution at least 1024x1024 pixels. Fill the frame with cabbage heads and layered textured green leaves.\nLighting/mood: Natural morning sunlight and visible dew, fresh green tones.\nConstraints: Opaque photograph. Fresh independent asset. Scenic illustration, not efficacy evidence.\nAvoid: Text, products, bottles, branding, UI, watermarks.\n",
+			"createdAt": "2026-10-11T15:34:41.791Z",
+			"processing": "Downsample 1254px square to 1024px and encode WebP quality 84.",
+			"generation": {
+				"callNumber": 2,
+				"tool": "image_gen.imagegen",
+				"transparentBackground": false,
+				"requestedMinimumDimensions": [1024, 1024],
+				"nativeOutput": {
+					"format": "PNG",
+					"width": 1254,
+					"height": 1254,
+					"channels": "srgb  3.0",
+					"fully_opaque": true,
+					"top_left_pixel": "srgb(143,170,157)",
+					"native_transparent_alpha": false,
+					"bytes": 2827311,
+					"sha256": "1af7baacb081c784de681d1f476f82931edafc90db236618aa1daf2331304557",
+					"identical_to_original": true,
+					"meets_minimum_dimensions": true
+				},
+				"limitations": [],
+				"status": "saved"
+			}
+		},
+		{
+			"id": "bean",
+			"production": "static/images/bean.webp",
+			"prompt": "Use case: photorealistic-natural\nAsset type: independent production crop photograph for the approved Living Fields website.\nPrimary request: Photographic tight crop of green bean pods hanging on leafy vines, natural morning light.\nComposition/framing: Square photograph, native resolution at least 1024x1024 pixels. Clearly visible hanging green bean pods with green vine leaves and natural shallow depth of field.\nConstraints: Opaque photograph. Fresh independent asset. Scenic illustration, not efficacy evidence.\nAvoid: Text, products, bottles, branding, UI, watermarks.\n",
+			"createdAt": "2026-10-11T15:34:41.811Z",
+			"processing": "Downsample 1254px square to 1024px and encode WebP quality 84.",
+			"generation": {
+				"callNumber": 3,
+				"tool": "image_gen.imagegen",
+				"transparentBackground": false,
+				"requestedMinimumDimensions": [1024, 1024],
+				"nativeOutput": {
+					"format": "PNG",
+					"width": 1254,
+					"height": 1254,
+					"channels": "srgb  3.0",
+					"fully_opaque": true,
+					"top_left_pixel": "srgb(217,222,220)",
+					"native_transparent_alpha": false,
+					"bytes": 2281182,
+					"sha256": "0a90bd2d2702a8004f63e9ed17e8ef221aeacfe2faba390fc2e2ed907e345c2b",
+					"identical_to_original": true,
+					"meets_minimum_dimensions": true
+				},
+				"limitations": [],
+				"status": "saved"
+			}
+		},
+		{
+			"id": "rice",
+			"production": "static/images/rice.webp",
+			"prompt": "Use case: photorealistic-natural\nAsset type: independent production rice photograph for the approved Living Fields website.\nPrimary request: Close photographic sunlit rice panicle with green and golden grains, lush shallow depth background.\nComposition/framing: Square photograph, native resolution at least 1024x1024 pixels. A graceful arching rice panicle dominates the close focus window, individual green and golden grains sharply visible, slender green rice leaves nearby, lush green softly blurred field behind. Match the rice-focus composition described in the approved page, but generate a fresh independent photograph.\nLighting/mood: Natural warm morning sunlight, luminous green and gold.\nConstraints: Opaque photograph. Scenic illustration, not efficacy evidence. No website composition.\nAvoid: Text, products, bottles, branding, UI, watermarks.\n",
+			"createdAt": "2026-10-11T15:34:41.831Z",
+			"processing": "Downsample 1254px square to 1024px and encode WebP quality 84.",
+			"generation": {
+				"callNumber": 4,
+				"tool": "image_gen.imagegen",
+				"transparentBackground": false,
+				"requestedMinimumDimensions": [1024, 1024],
+				"nativeOutput": {
+					"format": "PNG",
+					"width": 1254,
+					"height": 1254,
+					"channels": "srgb  3.0",
+					"fully_opaque": true,
+					"top_left_pixel": "srgb(228,229,227)",
+					"native_transparent_alpha": false,
+					"bytes": 2173263,
+					"sha256": "3b816227cb527f7420c05e5f34722c901ce6317340750d13b4c32eb55ed40bf3",
+					"identical_to_original": true,
+					"meets_minimum_dimensions": true
+				},
+				"limitations": [],
+				"status": "saved"
+			}
+		},
+		{
+			"id": "flowers",
+			"production": "static/images/flowers.webp",
+			"prompt": "Use case: photorealistic-natural\nAsset type: independent production crop photograph for the approved Living Fields website.\nPrimary request: Photographic pink and coral zinnia flowers in a green garden, natural morning light.\nComposition/framing: Square photograph, native resolution at least 1024x1024 pixels. Close crop of layered pink and coral zinnia blossoms on green stems with lush soft-focus garden foliage.\nConstraints: Opaque photograph. Fresh independent asset. Scenic illustration, not efficacy evidence.\nAvoid: Text, products, bottles, branding, UI, watermarks.\n",
+			"createdAt": "2026-10-11T15:34:41.853Z",
+			"processing": "Downsample 1254px square to 1024px and encode WebP quality 84.",
+			"generation": {
+				"callNumber": 5,
+				"tool": "image_gen.imagegen",
+				"transparentBackground": false,
+				"requestedMinimumDimensions": [1024, 1024],
+				"nativeOutput": {
+					"format": "PNG",
+					"width": 1254,
+					"height": 1254,
+					"channels": "srgb  3.0",
+					"fully_opaque": true,
+					"top_left_pixel": "srgb(138,156,84)",
+					"native_transparent_alpha": false,
+					"bytes": 2250069,
+					"sha256": "df0ba6abd82cf97287842ba71af3e3e76bffc7cbf5e96b9b94c750a9e1604c0e",
+					"identical_to_original": true,
+					"meets_minimum_dimensions": true
+				},
+				"limitations": [],
+				"status": "saved"
+			}
+		},
+		{
+			"id": "perennial",
+			"production": "static/images/perennial.webp",
+			"prompt": "Use case: photorealistic-natural\nAsset type: independent production perennial crop photograph for the approved Living Fields website.\nPrimary request: Photographic green citrus fruits among glossy perennial tree leaves, natural morning light.\nComposition/framing: Square photograph, native resolution at least 1024x1024 pixels. Tight crop of several fresh green citrus fruits on branches surrounded by glossy green leaves, natural orchard background with shallow depth of field.\nConstraints: Opaque photograph. Fresh independent asset. Scenic illustration, not efficacy evidence.\nAvoid: Text, products, bottles, branding, UI, watermarks.\n",
+			"createdAt": "2026-10-11T15:34:41.875Z",
+			"processing": "Downsample 1254px square to 1024px and encode WebP quality 84.",
+			"generation": {
+				"callNumber": 6,
+				"tool": "image_gen.imagegen",
+				"transparentBackground": false,
+				"requestedMinimumDimensions": [1024, 1024],
+				"nativeOutput": {
+					"format": "PNG",
+					"width": 1254,
+					"height": 1254,
+					"channels": "srgb  3.0",
+					"fully_opaque": true,
+					"top_left_pixel": "srgb(185,196,61)",
+					"native_transparent_alpha": false,
+					"bytes": 2257176,
+					"sha256": "ad97b3cd94f19ce94b12941a088212fa52058f9ed95a6ac52fbb26f696a1aa78",
+					"identical_to_original": true,
+					"meets_minimum_dimensions": true
+				},
+				"limitations": [],
+				"status": "saved"
+			}
+		},
+		{
+			"id": "bottle",
+			"production": "static/images/bottle.webp",
+			"prompt": "Use case: product-mockup\nAsset type: independent transparent production bottle illustration for the approved Living Fields website.\nPrimary request: Isolated white agricultural liquid bottle with a ribbed pale grey cap, restrained softly shaded photographic product rendering. This is explicitly an illustration, not real packaging.\nComposition/framing: Portrait, native resolution at least 512x1024 pixels. One full upright bottle viewed from the front, with comfortable transparent margins around its cap, sides and base. Rounded shoulders and white body.\nMaterials/textures: White plastic bottle, ribbed pale grey screw cap, subtle natural soft base shadow with translucent alpha.\nLabel: FRONT label area completely blank white; the semantic crop-color label will be placed separately in the UI. No printed or colored label.\nConstraints: GENUINE native transparent alpha background, including transparent corners and space around bottle. Keep full bottle visible. Render the isolated bottle only.\nAvoid: Text, brand, logo, badge, certification, markings, colored label, background scenery, opaque backdrop, fake checkerboard transparency, watermark.\n",
+			"createdAt": "2026-10-11T15:34:41.897Z",
+			"processing": "Threshold native alpha at 88%, trim transparent margins and resize to 640px tall. Removes translucent grey halo; label remains semantic HTML.",
+			"generation": {
+				"callNumber": 7,
+				"tool": "image_gen.imagegen",
+				"transparentBackground": true,
+				"requestedMinimumDimensions": [512, 1024],
+				"nativeOutput": {
+					"format": "PNG",
+					"width": 1024,
+					"height": 1536,
+					"channels": "srgba 4.0",
+					"fully_opaque": false,
+					"top_left_pixel": "srgba(0,0,0,0)",
+					"native_transparent_alpha": true,
+					"bytes": 1183475,
+					"sha256": "d785eacb27afabe3e06dd5fe1f6bfae73a83445834880cbe69bdff2aac9328ba",
+					"identical_to_original": true,
+					"meets_minimum_dimensions": true
+				},
+				"limitations": [],
+				"status": "saved"
+			}
+		},
+		{
+			"id": "sun-mark",
+			"production": "static/images/sun-mark.webp",
+			"prompt": "Use case: logo-brand\nAsset type: independent transparent raster sun emblem for the approved Living Fields website.\nPrimary request: Clean harvest gold sun-spiral emblem visually matching the approved small sun-spiral icon: a smooth central gold spiral surrounded by a circular ring of short curved tapering sun rays, forming a lively simple harvest sun.\nComposition/framing: Square, native resolution at least 256x256 pixels. Center a single compact gold emblem with clear transparent margins.\nStyle/medium: Crisp simple flat gold graphic with smooth edges, no dimensional shading.\nConstraints: GENUINE native transparent alpha background. Gold mark only. Create a fresh independent emblem; no website layout or cropped mock.\nAvoid: Lettering, text, extra objects, gradients, shadows, badges, border, white background, fake checkerboard transparency, watermark.\n",
+			"createdAt": "2026-10-11T15:34:41.918Z",
+			"processing": "Native alpha and gold-hue mask; retain 13 large connected components; recolour harvest gold; downsample to 268px. Removes coloured speckles without image regeneration.",
+			"generation": {
+				"callNumber": 8,
+				"tool": "image_gen.imagegen",
+				"transparentBackground": true,
+				"requestedMinimumDimensions": [256, 256],
+				"nativeOutput": {
+					"format": "PNG",
+					"width": 1254,
+					"height": 1254,
+					"channels": "srgba 4.0",
+					"fully_opaque": false,
+					"top_left_pixel": "srgba(0,0,0,0)",
+					"native_transparent_alpha": true,
+					"bytes": 516231,
+					"sha256": "b5871cef245a79ab7e4f7ae79ef0c9d396fdeb5feea7be85ac18d19cc414fe4b",
+					"identical_to_original": true,
+					"meets_minimum_dimensions": true
+				},
+				"limitations": [
+					"Visible red/yellow speckle artifacts and subtle shading prevent compliance with clean flat gold-only mark requirement. No reroll or postprocessing performed."
+				],
+				"status": "saved_with_reported_limitations"
+			}
+		}
+	]
+}

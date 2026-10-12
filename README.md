@@ -1,112 +1,63 @@
-# sv
+# Moshi Moshi — Living Fields
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+An English-only informational site for five crop-labeled Moshi Moshi biostimulants. Built with SvelteKit, Svelte 5, TypeScript, Tailwind CSS and pnpm; deployed as a prerendered static site.
 
-## Creating a project
+## Experience
 
-If you're seeing this, you've probably already done this step. Congrats!
+- A panoramic farm opening, crop-focus image, illustrative bottle and five-crop selector.
+- Rice is the initial state, not a recommendation. Selecting a crop updates its image, label, bottle and product link together.
+- An interruptible 520ms Web Animations API transition connects the thumbnail to the focus image. Scroll, resize and reduced-motion changes cancel it; reduced motion updates immediately.
+- All five product articles, before-use reading, About and section navigation remain available without JavaScript.
+- Responsive layouts, visible keyboard focus and accessible selection feedback.
+- The existing Paraglide integration uses English as its only active locale.
 
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-pnpm dlx sv@1.1.0 create --template minimal --types ts --add vitest="usages:unit,component" tailwindcss="plugins:typography,forms" enhanced-img sveltekit-adapter="adapter:static" mdsvex paraglide="languageTags:en, mm+demo:no" ai-tools="ide:opencode,other" experimental="features:async,remoteFunctions" --install pnpm ./
-```
-
-## Adding features
-
-Add features to your project with `sv add`:
+## Development
 
 ```sh
-npx sv add
+pnpm install
+pnpm dev
 ```
 
-For example, to add Tailwind CSS:
+Stop the development server before production compilation so the development and production compilers do not rewrite the same generated Paraglide directory concurrently.
 
 ```sh
-npx sv add tailwindcss
+pnpm exec paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide --emit-ts-declarations
+pnpm check
+pnpm lint
+pnpm format:check
+pnpm test
+pnpm build
+pnpm preview
 ```
 
-## UI components
+Regenerate Paraglide on a fresh checkout or after changing locale configuration, before type checking. Generated output is ignored by Git.
 
-[shadcn-svelte](https://www.shadcn-svelte.com/docs) is configured with the classic Vega preset, neutral colors, and Inter. Configuration lives in `components.json`; light/dark theme tokens live in `src/routes/layout.css`. The existing Tailwind forms and typography plugins remain enabled.
+The static adapter writes the deployable site to `build/`. The root layout enables prerendering. Deploy that directory to a static host; there is no checkout, sales form, dealer endpoint or application-advice API.
 
-The `Button` component is installed:
+## Source map
 
-```svelte
-<script lang="ts">
-	import { Button } from '#lib/components/ui/button/index.js';
-</script>
+| File                                       | Responsibility                                                       |
+| ------------------------------------------ | -------------------------------------------------------------------- |
+| `src/routes/+page.svelte`                  | Responsive homepage, crop selection, motion and reading content      |
+| `src/lib/crops.ts`                         | Crop identifiers, label names, image paths and factual reading notes |
+| `src/lib/components/product-bottle.svelte` | Illustrative bottle with a semantic crop label                       |
+| `src/routes/layout.css`                    | Shared palette, fonts and browser-surface styling                    |
+| `src/routes/+layout.svelte`                | Root rendering and sun favicon                                       |
+| `src/routes/+layout.ts`                    | Static prerendering                                                  |
+| `project.inlang/settings.json`             | English-only active locale                                           |
 
-<Button onclick={() => console.log('clicked')}>Save</Button>
-```
+## Product and design records
 
-Add more components using the installed CLI:
+`PRODUCT.md` records confirmed facts and constraints. Application rates, methods, ingredients, safety instructions, pack sizes, manufacturer details, prices, availability and performance claims remain unconfirmed. `DESIGN.md` describes the implemented visual system.
 
-```sh
-pnpm exec shadcn-svelte add dialog input
-```
+The eight optimized WebP images in `static/images/` are production assets. Their exact generation prompts, timestamps, native-output metadata, processing steps and limitations are retained in `assets/provenance.json`, outside the public deployment directory. The landscape is 1672 × 941 and was not upscaled.
 
-Components are copied into `src/lib/components/ui`, use the project's `#lib` imports, and can be edited directly. Add the `dark` class to the root `<html>` element to activate the dark theme.
+Crop scenes are illustrations, not efficacy evidence. The bottle, crop-coloured HTML labels and sun mark are not original packaging reproductions. Original packaging artwork is unavailable.
 
-## Linting and formatting
+## Repository hygiene and tooling
 
-[Oxlint](https://oxc.rs/docs/guide/usage/linter.html) and
-[Oxfmt](https://oxc.rs/docs/guide/usage/formatter.html) are installed as development dependencies.
+Completed design mocks, review screenshots, comparison diffs, scaffolds and duplicate native image outputs have been removed. `.impeccable/` is ignored for future local design exploration; production assets and durable documentation remain in the repository.
 
-```sh
-pnpm lint          # Check code; errors and warnings fail the command
-pnpm lint:fix      # Apply safe lint fixes
-pnpm format        # Format the project in place
-pnpm format:check  # Check formatting without writing files
-```
+Unused starter greeting components, example tests and the Svelte favicon have been removed. Vitest's client/server configuration remains available, but there are currently no application tests; `pnpm test` explicitly permits an empty suite and does not establish behavior coverage. Verify crop interactions and responsive layouts in the running site.
 
-Oxfmt uses a **100-character print width**, tabs, single quotes, and no trailing commas.
-The configuration lives in `.oxfmtrc.json`; print width is a wrapping target, not a hard limit
-for unbreakable strings or URLs.
-
-Oxlint uses correctness rules configured in `.oxlintrc.json`. The empty-file rule is disabled
-to allow the starter's comment-only library entrypoint. In `.svelte` files, Oxlint checks script
-blocks only; use `pnpm check` for Svelte component/template and type diagnostics.
-
-[`@shadcn/lint`](https://github.com/shadcn-ui/lint/blob/main/docs/svelte.md) runs as an Oxlint
-JavaScript plugin. Both `pnpm lint` and `pnpm lint:fix` use Oxlint only.
-
-The `shadcn/no-restyle` rule allows layout classes on design-system components but rejects
-appearance overrides such as padding; use component variants instead. The rule is disabled
-inside `src/lib/components/ui/**` so components can define their own styles.
-
-**Svelte limitation:** Oxlint checks script blocks only. This setup does not enforce design-system
-styling rules on Svelte markup or scoped `<style>` blocks. The plugin's script-only notice is
-expected. `pnpm check` provides Svelte/type diagnostics, not design-system style checks.
-
-Both tools respect `.gitignore` and explicitly exclude generated `.svelte-kit`, `build`,
-`src/lib/paraglide`, and `project.inlang` files. The pnpm lockfile is not formatted.
-VS Code recommends the official Oxc extension and uses it for formatting on save and lint fixes
-on explicit save.
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
+The configured shadcn-svelte primitives and development add-ons remain available. Oxlint checks Svelte script blocks; `pnpm check` covers templates and TypeScript. Oxfmt formats supported files using tabs, single quotes and a 100-character print width, but does not format Svelte files. Shipping Svelte components use those same conventions, formatted with Prettier's Svelte plugin.

@@ -31,6 +31,8 @@ export default defineConfig({
 		})
 	],
 	test: {
+		// Starter demo tests are removed; keep the runner ready for application tests.
+		passWithNoTests: true,
 		expect: { requireAssertions: true },
 		projects: [
 			{
