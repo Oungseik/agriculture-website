@@ -19,6 +19,7 @@ export default defineConfig({
 				experimental: { async: true }
 			},
 			adapter: adapter(),
+			paths: { base: (process.env.BASE_PATH ?? '') as '' | `/${string}` },
 			preprocess: [mdsvex({ extensions: ['.svx', '.md'] })],
 			extensions: ['.svelte', '.svx', '.md'],
 			experimental: { remoteFunctions: true }

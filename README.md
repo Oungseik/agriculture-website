@@ -34,6 +34,23 @@ Regenerate Paraglide on a fresh checkout or after changing locale configuration,
 
 The static adapter writes the deployable site to `build/`. The root layout enables prerendering. Deploy that directory to a static host; there is no checkout, sales form, dealer endpoint or application-advice API.
 
+## GitHub Pages
+
+- Repository: https://github.com/Oungseik/agriculture-website
+- Live site: https://oungseik.github.io/agriculture-website/
+- `.github/workflows/pages.yml` builds and deploys `build/` on every push to `main`; it can also be run manually from GitHub Actions.
+- GitHub Pages uses **GitHub Actions** as its deployment source. The workflow supplies Pages' base path through `BASE_PATH`, so assets and internal links work under the repository URL.
+- Routes use trailing slashes and prerender to `index.html` files so product and blog links can be opened directly on the static host.
+
+To reproduce the Pages build locally:
+
+```sh
+BASE_PATH=/agriculture-website pnpm build
+BASE_PATH=/agriculture-website pnpm preview
+```
+
+Without `BASE_PATH`, development and builds remain rooted at `/`.
+
 ## Source map
 
 | File                                       | Responsibility                                                       |
