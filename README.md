@@ -41,6 +41,7 @@ The static adapter writes the deployable site to `build/`. The root layout enabl
 - `.github/workflows/pages.yml` builds and deploys `build/` on every push to `main`; it can also be run manually from GitHub Actions.
 - GitHub Pages uses **GitHub Actions** as its deployment source. The workflow supplies Pages' base path through `BASE_PATH`, so assets and internal links work under the repository URL.
 - Routes use trailing slashes and prerender to `index.html` files so product and blog links can be opened directly on the static host.
+- Shared-image navigation ignores trailing slashes when matching preview photographs to page heroes.
 
 To reproduce the Pages build locally:
 

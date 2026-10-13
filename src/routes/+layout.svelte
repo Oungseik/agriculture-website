@@ -11,9 +11,10 @@
 	let transitionCount = 0;
 
 	function visibleImage(path?: string) {
+		const targetPath = path?.replace(/\/$/, '');
 		const headerBottom = document.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 0;
 		return Array.from(document.querySelectorAll<HTMLElement>('[data-transition-image]')).find((image) => {
-			if (path ? image.dataset.transitionImage !== path : !image.hasAttribute('data-page-image')) return false;
+			if (path ? image.dataset.transitionImage?.replace(/\/$/, '') !== targetPath : !image.hasAttribute('data-page-image')) return false;
 			const bounds = image.getBoundingClientRect();
 			return bounds.bottom > headerBottom && bounds.top < innerHeight;
 		});
