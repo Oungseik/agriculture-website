@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onNavigate } from '$app/navigation';
 	import { asset, resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import ArrowUpRight from '@lucide/svelte/icons/arrow-up-right';
@@ -7,6 +8,60 @@
 	import type { LayoutProps } from './$types';
 
 	let { children }: LayoutProps = $props();
+	let transitionCount = 0;
+
+	function visibleImage(path?: string) {
+		const headerBottom = document.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 0;
+		return Array.from(document.querySelectorAll<HTMLElement>('[data-transition-image]')).find((image) => {
+			if (path ? image.dataset.transitionImage !== path : !image.hasAttribute('data-page-image')) return false;
+			const bounds = image.getBoundingClientRect();
+			return bounds.bottom > headerBottom && bounds.top < innerHeight;
+		});
+	}
+
+	onNavigate((navigation) => {
+		if (
+			!document.startViewTransition ||
+			!CSS.supports('selector(:active-view-transition)') ||
+			window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+			navigation.from?.url.pathname === navigation.to?.url.pathname
+		) return;
+
+		const fromImage = visibleImage(navigation.to?.url.pathname) ?? visibleImage();
+		const imagePath = fromImage?.dataset.transitionImage;
+		const transitionId = ++transitionCount;
+		const imageName = `page-image-${transitionId}`;
+		if (fromImage) fromImage.style.viewTransitionName = imageName;
+
+		return new Promise<void>((resolve) => {
+			let toImage: HTMLElement | undefined;
+			let toName = imageName;
+			const transition = document.startViewTransition(async () => {
+				if (fromImage?.style.viewTransitionName === imageName) fromImage.style.removeProperty('view-transition-name');
+				resolve();
+				try {
+					await navigation.complete;
+				} catch {
+					transition.skipTransition();
+					return;
+				}
+				if (transitionId !== transitionCount) return;
+				toImage = visibleImage(imagePath) ?? visibleImage();
+				if (toImage) {
+					toName = toImage.dataset.transitionImage === imagePath ? imageName : `${imageName}-incoming`;
+					toImage.style.viewTransitionName = toName;
+					const photo = toImage instanceof HTMLImageElement ? toImage : toImage.querySelector('img');
+					await photo?.decode().catch(() => {});
+				}
+			});
+			// Aborted navigations can reject the transition without breaking the next navigation.
+			void transition.finished.catch(() => {}).then(() => {
+				// A newer transition may already own the same element.
+				if (fromImage?.style.viewTransitionName === imageName) fromImage.style.removeProperty('view-transition-name');
+				if (toImage?.style.viewTransitionName === toName) toImage.style.removeProperty('view-transition-name');
+			});
+		});
+	});
 </script>
 
 <svelte:head>
@@ -76,7 +131,7 @@
 <style>
 	.skip-link { position: fixed; top: 12px; left: 12px; z-index: 50; transform: translateY(-180%); padding: 12px 20px; background: var(--background); }
 	.skip-link:focus { transform: translateY(0); }
-	.site-header { position: sticky; top: 0; z-index: 10; background: var(--background); border-bottom: 1px solid var(--field-rule); }
+	.site-header { position: sticky; top: 0; z-index: 10; view-transition-name: site-header; background: var(--background); border-bottom: 1px solid var(--field-rule); }
 	.header-inner { min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 	.brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-size: 26px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
 	.brand img { width: 42px; height: 42px; object-fit: contain; }

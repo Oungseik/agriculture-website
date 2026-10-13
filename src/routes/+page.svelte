@@ -15,7 +15,9 @@
 </svelte:head>
 
 <section class="hero" aria-labelledby="intro-title">
-	<img class="hero-background" src={asset('images/landscape.webp')} alt="" width="1672" height="941" fetchpriority="high" />
+	<div class="hero-media" data-page-image data-transition-image={resolve('/')}>
+		<img class="hero-background" src={asset('images/landscape.webp')} alt="" width="1672" height="941" fetchpriority="high" />
+	</div>
 	<div class="hero-content container">
 		<div class="hero-copy">
 			<h1 id="intro-title">A closer look at<br />what you grow.</h1>
@@ -36,7 +38,7 @@
 	<div class="product-grid">
 		{#each crops as crop (crop.id)}
 			<a class="product-link" id={`product-${crop.id}`} href={resolve('/products/[slug]', { slug: crop.id })} aria-label={`Explore Moshi Moshi ${crop.label}`}>
-				<div class="product-visual">
+				<div class="product-visual" data-transition-image={resolve('/products/[slug]', { slug: crop.id })}>
 					<img class="crop-photo" src={asset(crop.image)} alt={crop.alt} width="1024" height="1024" loading="lazy" />
 					<div class="bottle-position"><ProductBottle label={crop.label} color={crop.color} /></div>
 				</div>
@@ -77,10 +79,11 @@
 	.blog-intro-copy .text-link { margin-top: 16px; }
 	.blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
 	.hero { position: relative; background: var(--field-ink); color: var(--field-paper); --secondary: var(--field-paper); --secondary-foreground: var(--field-ink); --ring: var(--field-paper); }
+	.hero-media { position: absolute; inset: 0; overflow: hidden; }
 	.hero-background { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 58%; }
-	.hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, color-mix(in srgb, var(--field-ink) 82%, transparent) 0%, color-mix(in srgb, var(--field-ink) 76%, transparent) 44%, color-mix(in srgb, var(--field-ink) 42%, transparent) 75%, color-mix(in srgb, var(--field-ink) 22%, transparent) 100%); }
+	.hero-media::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, color-mix(in srgb, var(--field-ink) 82%, transparent) 0%, color-mix(in srgb, var(--field-ink) 76%, transparent) 44%, color-mix(in srgb, var(--field-ink) 42%, transparent) 75%, color-mix(in srgb, var(--field-ink) 22%, transparent) 100%); }
 	.hero-content { position: relative; z-index: 2; display: flex; align-items: center; min-height: clamp(560px, 46vw, 680px); padding-block: 72px; }
-	.hero-copy { max-width: 780px; }
+	.hero-copy { max-width: 780px; view-transition-name: home-intro; }
 	h1 { font-family: var(--font-heading); font-size: clamp(52px, 6vw, 88px); font-weight: 400; line-height: 1.08; letter-spacing: -0.03em; text-wrap: initial; }
 	.hero-copy > p { max-width: 43ch; margin-top: 28px; color: var(--field-paper); font-size: 20px; line-height: 1.65; }
 	.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 32px; margin-top: 36px; }
@@ -117,7 +120,7 @@
 	@media (max-width: 760px) {
 		.blog-section { padding-block: 56px; }
 		.blog-grid { grid-template-columns: 1fr; gap: 36px; }
-		.hero::before { background: color-mix(in srgb, var(--field-ink) 74%, transparent); }
+		.hero-media::before { background: color-mix(in srgb, var(--field-ink) 74%, transparent); }
 		.hero-background { object-position: 58% center; }
 		.hero-content { min-height: 560px; padding-block: 64px; }
 		h1 { font-size: clamp(36px, 9vw, 64px); line-height: 1.12; }

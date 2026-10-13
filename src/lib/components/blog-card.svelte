@@ -8,7 +8,7 @@
 
 <article>
 	<a class="story-link" href={resolve('/blog/[slug]', { slug: post.slug })}>
-		<div class="story-photo"><img src={asset(post.image)} alt={post.alt} width={post.image === 'images/landscape.webp' ? 1672 : 1024} height={post.image === 'images/landscape.webp' ? 941 : 1024} loading="lazy" /></div>
+		<div class="story-photo" data-transition-image={resolve('/blog/[slug]', { slug: post.slug })}><img src={asset(post.image)} alt={post.alt} width={post.image === 'images/landscape.webp' ? 1672 : 1024} height={post.image === 'images/landscape.webp' ? 941 : 1024} loading="lazy" /></div>
 		<h3>{post.title}</h3>
 		<p class="story-meta">{post.category} <span aria-hidden="true">·</span> <time datetime={post.date}>{post.dateLabel}</time></p>
 		<p class="story-excerpt">{excerpt}</p>
@@ -20,7 +20,7 @@
 	article { min-width: 0; }
 	.story-link { display: block; color: var(--field-ink); text-decoration: none; }
 	.story-photo { overflow: hidden; background: var(--field-soft); }
-	img { width: 100%; aspect-ratio: 1.5; object-fit: cover; transition: transform 240ms ease-out; }
+	img { display: block; width: 100%; aspect-ratio: 1.5; object-fit: cover; transition: transform 240ms ease-out; }
 	h3 { margin-top: 24px; font-family: var(--font-heading); font-size: 26px; font-weight: 400; line-height: 1.3; letter-spacing: -0.02em; }
 	.story-meta { display: flex; flex-wrap: wrap; gap: 4px 8px; margin-top: 12px; color: var(--field-muted); font-size: 14px; }
 	.story-excerpt { margin-top: 16px; color: var(--field-muted); font-size: 17px; line-height: 1.7; }

@@ -16,15 +16,19 @@
 </svelte:head>
 
 <article class="container article-page">
-	<header class="article-header">
-		<h1>{post.title}</h1>
-		<p class="article-meta">{post.category} <span aria-hidden="true">·</span> <time datetime={post.date}>{post.dateLabel}</time></p>
-		<p class="article-intro">{excerpt}</p>
-	</header>
 	<figure class="article-photo">
-		<img src={asset(post.image)} alt={post.alt} width={post.image === 'images/landscape.webp' ? 1672 : 1024} height={post.image === 'images/landscape.webp' ? 941 : 1024} fetchpriority="high" />
+		<div class="article-image" data-page-image data-transition-image={resolve('/blog/[slug]', { slug: post.slug })}>
+			<img src={asset(post.image)} alt={post.alt} width={post.image === 'images/landscape.webp' ? 1672 : 1024} height={post.image === 'images/landscape.webp' ? 941 : 1024} fetchpriority="high" />
+		</div>
 		<figcaption>Illustrative crop photography. Sample article with lorem ipsum content.</figcaption>
 	</figure>
+	<header class="article-header">
+		<div>
+			<h1>{post.title}</h1>
+			<p class="article-meta">{post.category} <span aria-hidden="true">·</span> <time datetime={post.date}>{post.dateLabel}</time></p>
+		</div>
+		<p class="article-intro">{excerpt}</p>
+	</header>
 	<div class="reading-layout">
 		<nav class="article-contents" aria-label="In this story">
 			<h2>In this story</h2>
@@ -64,13 +68,13 @@
 </section>
 
 <style>
-	.article-page { padding-block: 40px 80px; }
-	.article-header { max-width: 900px; margin-inline: auto; text-align: center; }
-	h1 { font-family: var(--font-heading); font-size: clamp(42px, 4.8vw, 68px); font-weight: 400; line-height: 1.15; letter-spacing: -0.03em; }
-	.article-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 12px; margin-top: 24px; color: var(--field-muted); font-size: 15px; }
-	.article-intro { max-width: 56ch; margin: 24px auto 0; color: var(--field-muted); font-size: 21px; line-height: 1.7; }
-	.article-photo { margin-block: 48px 64px; }
-	.article-photo img { width: 100%; height: clamp(300px, 36vw, 480px); object-fit: cover; background: var(--field-soft); }
+	.article-page { padding-block: 32px 80px; }
+	.article-header { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 64px; padding-block: 40px 64px; }
+	h1 { font-family: var(--font-heading); font-size: clamp(42px, 4.5vw, 64px); font-weight: 400; line-height: 1.15; letter-spacing: -0.03em; }
+	.article-meta { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 24px; color: var(--field-muted); font-size: 15px; }
+	.article-intro { max-width: 44ch; color: var(--field-muted); font-size: 20px; line-height: 1.7; }
+	.article-image { overflow: hidden; background: var(--field-soft); }
+	.article-photo img { display: block; width: 100%; height: clamp(320px, 40vw, 560px); object-fit: cover; }
 	figcaption { margin-top: 12px; color: var(--field-muted); font-size: 14px; }
 	.reading-layout { display: grid; grid-template-columns: 220px minmax(0, 68ch); justify-content: center; gap: 80px; align-items: start; }
 	.article-contents { position: sticky; top: calc(var(--site-header-height) + 32px); display: flex; flex-direction: column; align-items: flex-start; }
@@ -89,12 +93,11 @@
 	@media (max-width: 1100px) { .reading-layout { gap: 48px; grid-template-columns: 180px minmax(0, 1fr); } }
 	@media (max-width: 760px) {
 		.article-page { padding-block: 24px 48px; }
-		.article-header { text-align: left; }
+		.article-header { grid-template-columns: 1fr; gap: 24px; padding-block: 28px 40px; }
 		h1 { font-size: clamp(38px, 9vw, 54px); }
 		.article-meta { justify-content: flex-start; margin-top: 20px; }
-		.article-intro { font-size: 18px; margin-top: 20px; }
-		.article-photo { margin-block: 32px 36px; }
-		.article-photo img { height: auto; aspect-ratio: 1.25; }
+		.article-intro { font-size: 18px; }
+		.article-photo img { height: auto; aspect-ratio: 1.2; }
 		.reading-layout { grid-template-columns: 1fr; gap: 32px; }
 		.article-contents { position: static; padding-bottom: 24px; border-bottom: 1px solid var(--field-rule); }
 		h2 { font-size: 28px; }

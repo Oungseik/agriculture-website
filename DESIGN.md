@@ -208,6 +208,8 @@ Contents navigation uses ordinary anchors with 44px minimum heights. Reading sec
 
 Button feedback uses Tailwind's 150ms standard easing. Reduced motion removes transitions and animations, disables the photographic hover enlargement, and restores immediate scrolling.
 
+Page navigation uses a 220ms fade for general content. A single visible crop or story preview photograph moves into its matching hero over 480ms; unrelated incoming hero images use a crop reveal. Article pages place the photograph first, then the title and introduction. The sticky header stays stationary, scroll restoration completes before capture, and reduced motion bypasses page animation.
+
 ## Do's and Don'ts
 
 ### Do:

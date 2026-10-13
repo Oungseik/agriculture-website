@@ -19,7 +19,7 @@
 	</header>
 	<article class="featured-story" aria-labelledby="featured-title">
 		<a href={resolve('/blog/[slug]', { slug: featured.slug })}>
-			<div class="featured-photo"><img src={asset(featured.image)} alt={featured.alt} width="1672" height="941" fetchpriority="high" /></div>
+			<div class="featured-photo" data-page-image data-transition-image={resolve('/blog/[slug]', { slug: featured.slug })}><img src={asset(featured.image)} alt={featured.alt} width="1672" height="941" fetchpriority="high" /></div>
 			<div class="featured-copy">
 				<h2 id="featured-title">{featured.title}</h2>
 				<p class="story-meta">{featured.category} <span aria-hidden="true">·</span> <time datetime={featured.date}>{featured.dateLabel}</time></p>
@@ -42,7 +42,7 @@
 	.blog-intro .sample-note { margin-top: 16px; font-size: 14px; }
 	.featured-story > a { display: grid; grid-template-columns: 1.2fr 1fr; color: inherit; text-decoration: none; background: var(--field-soft); }
 	.featured-photo { overflow: hidden; }
-	.featured-photo img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; transition: transform 240ms ease-out; }
+	.featured-photo img { display: block; width: 100%; height: 100%; min-height: 420px; object-fit: cover; transition: transform 240ms ease-out; }
 	.featured-copy { align-self: center; padding: 48px; }
 	h2 { font-family: var(--font-heading); font-size: clamp(30px, 3vw, 42px); font-weight: 400; line-height: 1.2; letter-spacing: -0.025em; }
 	.featured-copy > p { margin-top: 24px; color: var(--field-muted); line-height: 1.8; }

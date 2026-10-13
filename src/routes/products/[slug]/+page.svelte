@@ -44,7 +44,7 @@
 	</nav>
 	<section class="product-hero" aria-labelledby="product-title">
 		<figure class="product-figure">
-			<div class="product-photo">
+			<div class="product-photo" data-page-image data-transition-image={resolve('/products/[slug]', { slug: crop.id })}>
 				<img src={asset(crop.image)} alt={crop.alt} width="1024" height="1024" fetchpriority="high" />
 				<div class="product-bottle"><ProductBottle label={crop.label} color={crop.color} /></div>
 			</div>
@@ -96,7 +96,7 @@
 		<div class="related-grid">
 			{#each crops.filter((item) => item.id !== crop.id) as related (related.id)}
 				<a class="related-product" href={resolve('/products/[slug]', { slug: related.id })}>
-					<img src={asset(related.image)} alt={related.alt} width="1024" height="1024" loading="lazy" />
+					<img data-transition-image={resolve('/products/[slug]', { slug: related.id })} src={asset(related.image)} alt={related.alt} width="1024" height="1024" loading="lazy" />
 					<span>{related.label} <ArrowRight size={18} aria-hidden="true" /></span>
 				</a>
 			{/each}
